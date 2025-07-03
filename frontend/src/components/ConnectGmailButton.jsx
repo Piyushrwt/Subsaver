@@ -1,7 +1,8 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "../components/ui/button";
 import { toast } from "sonner";
 import { useAuth } from "./AuthProvider";
-import axios from "axios";
+import api from "../api/auth";
+import gmailApi from "../api/gmail";
 
 export default function ConnectGmailButton() {
   const { user, refreshUser } = useAuth();
@@ -23,11 +24,7 @@ export default function ConnectGmailButton() {
       }
 
       // Make an authenticated request to get the Google OAuth URL
-      const response = await axios.get("/api/gmail/auth", {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
+      const response = await gmailApi.get("/auth");
 
       // Redirect to Google OAuth
       if (response.data && response.data.authUrl) {
@@ -56,16 +53,7 @@ export default function ConnectGmailButton() {
 
   const handleDisconnect = async () => {
     try {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        toast.error("Authentication required");
-        return;
-      }
-      await axios.delete("/api/auth/gmail-disconnect", {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
+      await api.delete("/gmail-disconnect");
       toast.success("Gmail account disconnected. Auto import disabled.");
       await refreshUser();
     } catch (error) {

@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import axios from "axios";
+import api from "../api/auth";
 
 const AuthCtx = createContext();
 export const useAuth = () => useContext(AuthCtx);
@@ -31,9 +31,7 @@ export default function AuthProvider({ children }) {
     try {
       const token = localStorage.getItem("token");
       if (!token) return;
-      const response = await axios.get("/api/auth/me", {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      const response = await api.get("/me");
       setUser(response.data.user);
       localStorage.setItem("user", JSON.stringify(response.data.user));
     } catch (error) {
@@ -49,10 +47,7 @@ export default function AuthProvider({ children }) {
         return false;
       }
 
-      const response = await axios.get("/api/auth/me", {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      
+      const response = await api.get("/me");
       console.log("Auth test successful:", response.data);
       return true;
     } catch (error) {
