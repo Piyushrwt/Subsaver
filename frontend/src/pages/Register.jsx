@@ -31,9 +31,9 @@ export default function Register() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-zinc-950 px-2">
       {/* Main Card */}
-      <div className="flex w-full max-w-4xl bg-zinc-900 rounded-2xl shadow-2xl overflow-hidden border border-zinc-800">
+      <div className="flex flex-col md:flex-row w-full max-w-4xl bg-zinc-900 rounded-2xl shadow-2xl overflow-hidden border border-zinc-800">
         {/* Left: Registration Form */}
-        <div className="flex-1 flex flex-col justify-center px-10 py-12">
+        <div className="flex-1 flex flex-col justify-center px-4 sm:px-10 py-8 sm:py-12">
           {/* Logo/App Name */}
           <div className="flex items-center gap-2 mb-6">
             {/* Simple logo icon (replace with your own if desired) */}
@@ -112,13 +112,13 @@ export default function Register() {
           </div>
         </div>
         {/* Right: Illustration and Marketing Message */}
-        <div className="hidden md:flex flex-col justify-center items-center flex-1 bg-zinc-950 border-l border-zinc-800 p-10">
+        <div className="hidden md:flex flex-col justify-center items-center flex-1 bg-zinc-950 border-l border-zinc-800 p-6 md:p-10">
           <img
             src={OnlinePaymentsSVG}
             alt="Subscription illustration"
-            className="w-56 h-44 object-contain mb-4"
+            className="w-40 h-32 sm:w-56 sm:h-44 object-contain mb-4"
           />
-          <h3 className="text-xl font-bold text-green-400 mt-8 mb-2 text-center">All your subscriptions, one dashboard</h3>
+          <h3 className="text-lg sm:text-xl font-bold text-green-400 mt-8 mb-2 text-center">All your subscriptions, one dashboard</h3>
           <p className="text-zinc-300 text-center max-w-xs">Track, manage, and get reminders for every online service you use. Stay in control and never miss a renewal again!</p>
         </div>
       </div>

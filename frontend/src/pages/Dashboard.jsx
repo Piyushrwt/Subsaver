@@ -48,17 +48,15 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-6 space-y-6">
-      {/* ───────────────── Header ───────────────── */}
+    <div className="max-w-6xl mx-auto px-2 sm:px-4 py-4 sm:py-6 space-y-4 sm:space-y-6">
+      {/* Header */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-3xl font-bold grow">
+        <h1 className="text-2xl sm:text-3xl font-bold grow">
           Welcome, {user?.name || "User"}
         </h1>
-
-        <div className="flex gap-3 items-center">
-          {/* DaisyUI Theme Switcher */}
+        <div className="flex flex-wrap gap-2 sm:gap-3 items-center justify-start sm:justify-end">
           <select
-            className="select select-bordered select-xs w-24"
+            className="select select-bordered select-xs w-20 sm:w-24"
             value={theme}
             onChange={e => setTheme(e.target.value)}
             aria-label="Theme switcher"
@@ -72,18 +70,17 @@ export default function Dashboard() {
           <Button onClick={() => setOpen(true)}>+ Add Subscription</Button>
         </div>
       </div>
-
-      {/* ──────────────── KPI Cards ──────────────── */}
+      {/* KPI Cards */}
       <StatsCards />
-
-      {/* ─────────────── Subscription Table ─────────────── */}
-      <Card className="shadow-md">
-        <CardContent className="p-0">
-          <SubscriptionTable />
+      {/* Subscription Table */}
+      <Card className="shadow-md overflow-x-auto">
+        <CardContent className="p-0 min-w-[340px] sm:p-0">
+          <div className="w-full overflow-x-auto">
+            <SubscriptionTable />
+          </div>
         </CardContent>
       </Card>
-
-      {/* ─────────────── Add‑Subscription Modal ─────────────── */}
+      {/* Add-Subscription Modal */}
       <AddSubscriptionModal open={open} onOpenChange={setOpen} />
     </div>
   );

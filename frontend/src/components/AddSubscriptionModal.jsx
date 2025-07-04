@@ -27,16 +27,16 @@ export default function AddSubscriptionModal({ open, onOpenChange }) {
   if (!open) return null;
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent>
+      <DialogContent className="max-w-xs sm:max-w-md w-full">
         <DialogHeader title="Add Subscription" />
-        <form onSubmit={handle} className="space-y-4">
-          <Input name="name" placeholder="Service name" required />
-          <Input name="amount" type="number" placeholder="Amount" required />
-          <select name="billingCycle" className="w-full p-2 border rounded">
+        <form onSubmit={handle} className="space-y-3 sm:space-y-4">
+          <Input name="name" placeholder="Service name" required className="text-sm sm:text-base" />
+          <Input name="amount" type="number" placeholder="Amount" required className="text-sm sm:text-base" />
+          <select name="billingCycle" className="w-full p-2 border rounded text-sm sm:text-base">
             <option value="monthly">Monthly</option>
             <option value="yearly">Yearly</option>
           </select>
-          <Input name="renewalDate" type="date" required />
+          <Input name="renewalDate" type="date" required className="text-sm sm:text-base" />
           <Button type="submit" className="w-full" disabled={isLoading}>
             {isLoading ? "Saving..." : "Save"}
           </Button>

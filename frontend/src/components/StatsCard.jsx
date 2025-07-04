@@ -10,12 +10,12 @@ export default function StatsCards() {
     { label: "Upcoming Renewals", key: "upcoming", color: "bg-orange-100 text-orange-800" },
   ];
   return (
-    <div className="grid sm:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4">
       {stats.map(s => (
-        <Card key={s.key} className={`${s.color}`}>
+        <Card key={s.key} className={`${s.color} p-2 sm:p-4`}>
           <CardContent>
-            <p className="text-sm font-medium">{s.label}</p>
-            <p className="text-2xl font-bold mt-1">
+            <p className="text-xs sm:text-sm font-medium">{s.label}</p>
+            <p className="text-xl sm:text-2xl font-bold mt-1">
               {s.key === "upcoming" ? data.upcoming ?? 0 : `₹${data[s.key] ?? 0}`}
             </p>
           </CardContent>
