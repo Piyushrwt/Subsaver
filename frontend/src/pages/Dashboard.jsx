@@ -54,7 +54,7 @@ export default function Dashboard() {
         <h1 className="text-2xl sm:text-3xl font-bold grow">
           Welcome, {user?.name || "User"}
         </h1>
-        <div className="flex flex-wrap gap-2 sm:gap-3 items-center justify-start sm:justify-end">
+        <div className="flex flex-wrap gap-2 sm:gap-3 items-center justify-start sm:justify-end w-full sm:w-auto">
           <select
             className="select select-bordered select-xs w-20 sm:w-24"
             value={theme}
@@ -65,9 +65,9 @@ export default function Dashboard() {
               <option key={t.value} value={t.value}>{t.label}</option>
             ))}
           </select>
-          <Button onClick={handleLogout} variant="destructive">Logout</Button>
-          <ConnectGmailButton />
-          <Button onClick={() => setOpen(true)}>+ Add Subscription</Button>
+          <Button className="w-auto text-[10px] px-3 py-2 sm:text-base sm:px-5 sm:py-2.5 font-medium" onClick={handleLogout} variant="destructive">Logout</Button>
+          <ConnectGmailButton className="w-auto text-[10px] px-3 py-2 sm:text-base sm:px-5 sm:py-2.5 font-medium" />
+          <Button className="w-auto text-[10px] px-3 py-2 sm:text-base sm:px-5 sm:py-2.5 font-medium" onClick={() => setOpen(true)}>+ Add Subscription</Button>
         </div>
       </div>
       {/* KPI Cards */}

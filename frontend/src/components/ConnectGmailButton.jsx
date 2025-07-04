@@ -64,7 +64,7 @@ export default function ConnectGmailButton() {
 
   if (user?.gmailRefreshToken) {
     return (
-      <Button onClick={handleDisconnect} variant="destructive">
+      <Button onClick={handleDisconnect} variant="destructive" className="w-auto text-[10px] px-3 py-2 sm:text-base sm:px-5 sm:py-2.5 font-medium">
         Disconnect Gmail
       </Button>
     );
